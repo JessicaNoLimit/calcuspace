@@ -1173,6 +1173,23 @@ button:active {
         height: 34px;
         min-width: 34px;
     }
+
+    .pantalla {
+        padding: 14px 12px;
+    }
+
+    #pantalla-resultado.resultado-vacio {
+        font-size: clamp(14px, 4.2vw, 18px);
+        letter-spacing: 0.4px;
+        line-height: 1.2;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        min-height: 1.2em;
+        padding-inline: 6px;
+    }
 }
 
 @media (max-width: 359px) {
