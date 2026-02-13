@@ -1003,8 +1003,44 @@ function inicializar() {
         tabFavs.addEventListener('click', () => { tabFavs.classList.add('active'); tabHistory.classList.remove('active'); if(histDiv) histDiv.style.display='none'; if(favDiv) favDiv.style.display='block'; });
     }
 
+    // Mobile top bar menu
+    const topControls = document.querySelector('.top-controls');
+    const mobileMenuOpen = document.getElementById('mobile-menu-open');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+    function openTopMenu() {
+        if (!topControls) return;
+        topControls.classList.add('menu-open');
+    }
+
+    function closeTopMenu() {
+        if (!topControls) return;
+        topControls.classList.remove('menu-open');
+    }
+
+    if (mobileMenuOpen) {
+        mobileMenuOpen.addEventListener('click', openTopMenu);
+    }
+
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', closeTopMenu);
+    }
+
+    document.addEventListener('click', (event) => {
+        if (!topControls || window.innerWidth > 768) return;
+        if (topControls.contains(event.target)) return;
+        closeTopMenu();
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            closeTopMenu();
+        }
+    });
+
     // Help overlay
     const helpBtn = document.getElementById('help-shortcut');
+    const mobileHelpBtn = document.getElementById('mobile-help-shortcut');
     const helpOverlay = document.getElementById('help-overlay');
     const helpClose = document.getElementById('help-close');
 
@@ -1021,6 +1057,7 @@ function inicializar() {
     }
 
     if (helpBtn) helpBtn.addEventListener('click', openHelp);
+    if (mobileHelpBtn) mobileHelpBtn.addEventListener('click', () => { openHelp(); closeTopMenu(); });
     if (helpClose) helpClose.addEventListener('click', closeHelp);
     if (helpOverlay) {
         helpOverlay.addEventListener('click', (e) => { if (e.target === helpOverlay) closeHelp(); });

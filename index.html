@@ -8,35 +8,43 @@
 </head>
 <body class="theme-dark">
     <div class="top-controls">
-        <button
-            id="theme-toggle"
-            class="theme-toggle"
-            type="button"
-            aria-label="Activar tema claro"
-            title="Cambiar tema"
-        >
-            <span class="theme-icon theme-icon-sun" aria-hidden="true">
-                <svg viewBox="0 0 24 24" role="img" focusable="false">
-                    <circle cx="12" cy="12" r="4.5"></circle>
-                    <path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.3 4.3l2.1 2.1M17.6 17.6l2.1 2.1M19.7 4.3l-2.1 2.1M6.4 17.6l-2.1 2.1"></path>
-                </svg>
-            </span>
-            <span class="theme-icon theme-icon-moon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" role="img" focusable="false">
-                    <path d="M20.5 14.2A8.6 8.6 0 1 1 9.8 3.5a7.1 7.1 0 1 0 10.7 10.7z"></path>
-                </svg>
-            </span>
-        </button>
-        <button
-            id="sound-toggle"
-            class="sound-toggle"
-            type="button"
-            aria-label="Silenciar sonido"
-            title="Sonido"
-        >
-            <span class="sound-icon sound-icon-on" aria-hidden="true">♪</span>
-            <span class="sound-icon sound-icon-off" aria-hidden="true">♪✕</span>
-        </button>
+        <div class="mobile-topbar">
+            <button id="mobile-menu-open" class="mobile-menu-btn" type="button" aria-label="Abrir menú">☰</button>
+            <div class="mobile-title">Calcuspace</div>
+            <button id="mobile-menu-close" class="mobile-menu-btn" type="button" aria-label="Cerrar menú">✕</button>
+        </div>
+        <div class="top-controls-menu">
+            <button
+                id="theme-toggle"
+                class="theme-toggle"
+                type="button"
+                aria-label="Activar tema claro"
+                title="Cambiar tema"
+            >
+                <span class="theme-icon theme-icon-sun" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" role="img" focusable="false">
+                        <circle cx="12" cy="12" r="4.5"></circle>
+                        <path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.3 4.3l2.1 2.1M17.6 17.6l2.1 2.1M19.7 4.3l-2.1 2.1M6.4 17.6l-2.1 2.1"></path>
+                    </svg>
+                </span>
+                <span class="theme-icon theme-icon-moon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" role="img" focusable="false">
+                        <path d="M20.5 14.2A8.6 8.6 0 1 1 9.8 3.5a7.1 7.1 0 1 0 10.7 10.7z"></path>
+                    </svg>
+                </span>
+            </button>
+            <button
+                id="sound-toggle"
+                class="sound-toggle"
+                type="button"
+                aria-label="Silenciar sonido"
+                title="Sonido"
+            >
+                <span class="sound-icon sound-icon-on" aria-hidden="true">♪</span>
+                <span class="sound-icon sound-icon-off" aria-hidden="true">♪✕</span>
+            </button>
+            <button id="mobile-help-shortcut" class="mobile-help-shortcut" type="button" aria-label="Mostrar atajos" title="Atajos">?</button>
+        </div>
     </div>
     <div id="fx-layer"></div>
     <div class="layout">
