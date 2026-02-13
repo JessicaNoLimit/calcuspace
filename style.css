@@ -1179,16 +1179,20 @@ button:active {
     }
 
     #pantalla-resultado.resultado-vacio {
-        font-size: clamp(14px, 4.2vw, 18px);
-        letter-spacing: 0.4px;
+        font-size: clamp(11px, 3.4vw, 14px);
+        letter-spacing: 0;
         line-height: 1.2;
         text-align: center;
+        display: block;
+        max-width: 100%;
         white-space: nowrap;
+        word-break: normal;
+        overflow-wrap: normal;
         overflow: hidden;
         text-overflow: ellipsis;
         width: 100%;
         min-height: 1.2em;
-        padding-inline: 6px;
+        padding-inline: 2px;
     }
 }
 
@@ -1200,6 +1204,10 @@ button:active {
 
     .mobile-title {
         display: none;
+    }
+
+    #pantalla-resultado.resultado-vacio {
+        font-size: 10px;
     }
 }
 
