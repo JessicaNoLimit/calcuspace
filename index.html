@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-dark">
+    <div class="top-controls">
+        <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Activar tema claro"
+            title="Cambiar tema"
+        >
+            <span class="theme-icon theme-icon-sun" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" focusable="false">
+                    <circle cx="12" cy="12" r="4.5"></circle>
+                    <path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.3 4.3l2.1 2.1M17.6 17.6l2.1 2.1M19.7 4.3l-2.1 2.1M6.4 17.6l-2.1 2.1"></path>
+                </svg>
+            </span>
+            <span class="theme-icon theme-icon-moon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" role="img" focusable="false">
+                    <path d="M20.5 14.2A8.6 8.6 0 1 1 9.8 3.5a7.1 7.1 0 1 0 10.7 10.7z"></path>
+                </svg>
+            </span>
+        </button>
+        <button
+            id="sound-toggle"
+            class="sound-toggle"
+            type="button"
+            aria-label="Silenciar sonido"
+            title="Sonido"
+        >
+            <span class="sound-icon sound-icon-on" aria-hidden="true">♪</span>
+            <span class="sound-icon sound-icon-off" aria-hidden="true">♪✕</span>
+        </button>
+    </div>
+    <div id="fx-layer"></div>
+    <div class="layout">
+        <div class="contenedor">
+            <div class="pantalla">
+                <div id="pantalla-operacion"></div>
+                <div id="pantalla-resultado">0</div>
+                <div id="memory-indicator" aria-hidden="true" class="memory-indicator">M</div>
+            </div>
+
+            <!-- Mini memory row stays above buttons -->
+
+            <div class="mini-memory-row" aria-hidden="false">
+                <button class="mini-button" id="mc">MC</button>
+                <button class="mini-button" id="mr">MR</button>
+                <button class="mini-button" id="mp">M+</button>
+                <button class="mini-button" id="mm">M-</button>
+            </div>
+
+            <div class="botones">
+                <button class="limpiar" onclick="calculadora.limpiar(); actualizarPantalla(); mostrarHistorial();">C</button>
+                <button class="operador" onclick="calculadora.agregarOperador('/'); actualizarPantalla();">÷</button>
+                <button class="operador" onclick="calculadora.agregarOperador('*'); actualizarPantalla();">×</button>
+
+                <button data-numeric="7" onclick="calculadora.agregarNumero('7'); actualizarPantalla();">7</button>
+                <button data-numeric="8" onclick="calculadora.agregarNumero('8'); actualizarPantalla();">8</button>
+                <button data-numeric="9" onclick="calculadora.agregarNumero('9'); actualizarPantalla();">9</button>
+                <button class="operador" onclick="calculadora.agregarOperador('-'); actualizarPantalla();">−</button>
+
+                <button data-numeric="4" onclick="calculadora.agregarNumero('4'); actualizarPantalla();">4</button>
+                <button data-numeric="5" onclick="calculadora.agregarNumero('5'); actualizarPantalla();">5</button>
+                <button data-numeric="6" onclick="calculadora.agregarNumero('6'); actualizarPantalla();">6</button>
+                <button class="operador" onclick="calculadora.agregarOperador('+'); actualizarPantalla();">+</button>
+
+                <button data-numeric="1" onclick="calculadora.agregarNumero('1'); actualizarPantalla();">1</button>
+                <button data-numeric="2" onclick="calculadora.agregarNumero('2'); actualizarPantalla();">2</button>
+                <button data-numeric="3" onclick="calculadora.agregarNumero('3'); actualizarPantalla();">3</button>
+                <button class="igual" onclick="calculadora.calcular(); actualizarPantalla(); mostrarHistorial();">=</button>
+
+                <button data-numeric="0" onclick="calculadora.agregarNumero('0'); actualizarPantalla();" style="grid-column: span 2;">0</button>
+                <button data-numeric="." onclick="calculadora.agregarNumero('.'); actualizarPantalla();">.</button>
+                <button class="limpiar" onclick="calculadora.backspace(); actualizarPantalla();">⌫</button>
+            </div>
+            <div class="botones-footer">
+                <button id="help-shortcut" aria-label="Mostrar atajos" title="Atajos" class="mini-help">?</button>
+            </div>
+        </div>
+
+        <div class="historial">
+            <div class="historial-top-controls">
+                <div class="panel-title">
+                    <h3>Últimas Operaciones</h3>
+                </div>
+                <div class="panel-tabs">
+                    <button class="historial-tab active" id="tab-history">Historial</button>
+                    <button class="historial-tab" id="tab-favs">Favoritos</button>
+                </div>
+            </div>
+            <div id="historial"></div>
+            <div id="favorites" style="display:none; margin-top:8px;"></div>
+        </div>
+    </div>
+    <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <div id="help-overlay" aria-hidden="true">
+        <div class="help-modal" role="dialog" aria-modal="true" aria-labelledby="help-title">
+            <h4 id="help-title">Atajos de teclado</h4>
+            <ul>
+                <li>0-9: escribir número</li>
+                <li>. : decimal</li>
+                <li>+ - * / : operadores</li>
+                <li>Enter: =</li>
+                <li>Backspace: borrar último dígito</li>
+                <li>Esc: limpiar (C) o cerrar overlay</li>
+            </ul>
+            <button id="help-close" class="help-close">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
