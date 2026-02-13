@@ -1116,9 +1116,71 @@ button:active {
     }
 }
 
+@media (max-width: 600px) {
+    body {
+        padding-top: calc(58px + env(safe-area-inset-top, 0px));
+        padding-right: 10px;
+        padding-bottom: 14px;
+        padding-left: 10px;
+    }
+
+    .top-controls {
+        top: 0;
+        left: 0;
+        right: 0;
+        height: calc(52px + env(safe-area-inset-top, 0px));
+        padding-top: calc(6px + env(safe-area-inset-top, 0px));
+        padding-right: 10px;
+        padding-bottom: 6px;
+        padding-left: 10px;
+        background:
+            linear-gradient(180deg, rgba(8, 14, 34, 0.88) 0%, rgba(8, 14, 34, 0.62) 70%, rgba(8, 14, 34, 0.3) 100%);
+        border-bottom: 1px solid rgba(120, 210, 255, 0.2);
+        backdrop-filter: blur(8px);
+        overflow: visible;
+    }
+
+    .mobile-topbar {
+        grid-template-columns: 32px 1fr 32px;
+        min-height: 40px;
+        gap: 8px;
+    }
+
+    .mobile-menu-btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+        font-size: 16px;
+    }
+
+    .mobile-title {
+        font-size: 12px;
+        letter-spacing: 0.8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .top-controls-menu {
+        margin-top: 6px;
+        gap: 8px;
+    }
+
+    .top-controls .theme-toggle,
+    .top-controls .sound-toggle,
+    .top-controls .mobile-help-shortcut {
+        width: 34px;
+        height: 34px;
+        min-width: 34px;
+    }
+}
+
 @media (max-height: 750px) and (max-width: 480px) {
     body {
-        padding: 15px;
+        padding-top: calc(58px + env(safe-area-inset-top, 0px));
+        padding-right: 10px;
+        padding-bottom: 12px;
+        padding-left: 10px;
     }
 
     .layout {
