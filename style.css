@@ -1175,6 +1175,17 @@ button:active {
     }
 }
 
+@media (max-width: 359px) {
+    .mobile-topbar {
+        grid-template-columns: 32px 1fr 32px;
+        gap: 6px;
+    }
+
+    .mobile-title {
+        display: none;
+    }
+}
+
 @media (max-height: 750px) and (max-width: 480px) {
     body {
         padding-top: calc(58px + env(safe-area-inset-top, 0px));
